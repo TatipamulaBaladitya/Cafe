@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Bill</title>
+  <style>
+    body {
+      font-family: 'Arial';
+      padding: 30px;
+      background: #f2f2f2;
+    }
+    .bill-container {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    h1, h3 {
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="bill-container">
+    <h1>Café QR</h1>
+    <h3>Your Order Receipt</h3>
+    <p><strong>Token:</strong> <span id="token"></span></p>
+    <ul id="bill-list"></ul>
+    <p><strong>Total: ₹<span id="total"></span></strong></p>
+    <button class="btn" onclick="downloadPDF()">Download PDF</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const cart = JSON.parse(decodeURIComponent(urlParams.get('cart')));
+    const total = urlParams.get('total');
+    const token = urlParams.get('token');
+
+    document.getElementById('token').textContent = token;
+    document.getElementById('total').textContent = total;
+
+    const billList = document.getElementById('bill-list');
+    cart.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.name} x${item.qty} - ₹${item.price * item.qty}`;
+      billList.appendChild(li);
+    });
+
+    function downloadPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      let y = 20;
+      doc.setFontSize(18);
+      doc.text("Café QR - Receipt", 20, y);
+      y += 10;
+      doc.setFontSize(12);
+      doc.text(`Token: ${token}`, 20, y);
+      y += 10;
+      cart.forEach((item, index) => {
+        doc.text(`${index + 1}. ${item.name} x${item.qty} - ₹${item.price * item.qty}`, 20, y);
+        y += 8;
+      });
+      y += 10;
+      doc.text(`Total: ₹${total}`, 20, y);
+      doc.save(`CafeQR_Bill_${token}.pdf`);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OASIS ESPRESSO CAFE</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-[#f9f5f0] text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center p-4 shadow-md bg-white sticky top-0 z-10">
+    <h1 class="text-xl font-bold text-brown-800">OASIS ESPRESSO</h1>
+    <ul class="flex gap-6 text-sm font-semibold">
+      <li><a href="index.html" class="hover:text-yellow-700">Home</a></li>
+      <li><a href="menu.html" class="hover:text-yellow-700">Menu</a></li>
+      <li><a href="about.html" class="hover:text-yellow-700">About</a></li>
+      <li><a href="contact.html" class="hover:text-yellow-700">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col items-center text-center px-6 py-20 bg-[url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085')] bg-cover bg-center text-white">
+    <div class="bg-black bg-opacity-60 p-10 rounded-xl">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Welcome to Oasis Espresso</h2>
+      <p class="text-lg mb-6">Your daily dose of handcrafted brews & cozy vibes</p>
+      <a href="menu.html" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition-all">
+        Explore Menu ☕
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Section -->
+  <section class="py-16 px-6 md:px-20 bg-white">
+    <h3 class="text-2xl md:text-3xl font-bold text-center mb-10">Signature Picks</h3>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-[#fff8ee] p-6 rounded-lg shadow hover:scale-105 transition">
+        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772" alt="Latte" class="rounded-md mb-4 h-48 w-full object-cover">
+        <h4 class="text-xl font-semibold mb-2">Caramel Latte</h4>
+        <p class="text-sm text-gray-600">Smooth, rich, and drizzled with golden caramel.</p>
+      </div>
+      <div class="bg-[#fff8ee] p-6 rounded-lg shadow hover:scale-105 transition">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" alt="Pastry" class="rounded-md mb-4 h-48 w-full object-cover">
+        <h4 class="text-xl font-semibold mb-2">Butter Croissant</h4>
+        <p class="text-sm text-gray-600">Flaky layers baked to golden perfection.</p>
+      </div>
+      <div class="bg-[#fff8ee] p-6 rounded-lg shadow hover:scale-105 transition">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Cold Brew" class="rounded-md mb-4 h-48 w-full object-cover">
+        <h4 class="text-xl font-semibold mb-2">Vanilla Cold Brew</h4>
+        <p class="text-sm text-gray-600">Cool, energizing & infused with Madagascar vanilla.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 text-center p-6 mt-10">
+    <p class="text-sm">&copy; 2025 Oasis Espresso Café. Brewed with ❤️</p>
+  </footer>
+
+</body>
+</html>
